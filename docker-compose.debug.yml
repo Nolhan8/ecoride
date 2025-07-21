@@ -1,8 +1,8 @@
 version: '3.4'
 
 services:
-  garageparrot:
-    image: garageparrot
+  ecoride:
+    image: ecoride
     build:
       context: .
       dockerfile: ./Dockerfile

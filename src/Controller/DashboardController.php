@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Car;
-use App\Repository\CarRepository;
+use App\Entity\Trajets;
+use App\Repository\TrajetsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;

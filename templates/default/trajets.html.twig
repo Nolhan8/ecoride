@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trajets - EcoRide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/trajets.css') }}">
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+</head>
+<body>
+    <header>
+        <div>
+            <img src="{{ asset('images/logo.png') }}" alt="EcoRide" class="logo">
+            <h1>EcoRide</h1>
+        </div>
+        <!-- Bouton de menu pour les appareils mobiles -->
+        <div class="menu-toggle">&#9776;</div>
+        <!-- Navigation -->
+        <nav>
+            <a href="{{ path('app_default_home') }}">Accueil</a>
+            <a class="active" href="{{ path('trajets') }}">Trajets</a>
+            <a href="{{ path('app_default_services') }}">Services</a>
+            <a href="{{ path('app_default_contact') }}">Contact</a>
+            <a href="{{ path('feedback') }}">Témoignages</a>
+            <a href="{{ path('app_login') }}">Connexion</a>
+        </nav>
+    </header>
+    <!-- Contenu principal -->
+    <div class="container">
+        <!-- Titre principal -->
+        <div class="big-title">
+            <img src="{{ asset('images/trajet.jpg') }}" alt="route" class="full-width-image">
+            <div class="big-title-overlay"></div>
+            <h2>Trajets</h2>
+        </div>
+            <div class="filters col-md-8 mx-auto">
+                <div class="row justify-content-center">
+                    <!-- Bouton Filtre pour la version mobile -->
+                    <div class="col-12 mt-1 d-md-none mb-3 text-center">
+                        <button id="filter-toggle-btn" class="btn btn-success">
+                            Filtres <i class="bi bi-filter"></i>
+                        </button>
+                    </div>
+                    <div class="filters-content col-12 col-md-8 mx-auto">
+                        <form method="get" action="{{ path('api_trajets_trajets_filter') }}">
+                            <div class="mb-3">
+                                <label for="depart">Départ :</label>
+                                <input type="text" name="depart" id="depart" placeholder="Ex : Paris" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label for="destination">Destination :</label>
+                                <input type="text" name="destination" id="destination" placeholder="Ex : Lyon" class="form-control">
+                            </div>
+                            <button type="submit" class="btn btn-success">Filtrer</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+                
+        </div>
+    </div>
+</div>
+
+
+<div class="row row-cols-1 row-cols-md-3">
+    {% for trajet in trajets %}
+    <div class="col-md-4">
+        <div class="card" data-driver="{{ trajet.driver }}" data-price="{{ trajet.price }}" data-depart="{{ trajet.depart }}" data-destination="{{ trajet.destination }}">
+            <img src="{{ asset('images/400.svg') }}" class="card-img-top" alt="Trajets">
+            <div class="card-body">
+                <h3 class="card-title">{{ trajet.driver }}</h3>
+                <p class="card-price">Prix : {{ trajet.price }} €</p>
+                <p class="card-depart">Départ :{{ trajet.depart }}</p>
+                <p class="card-destination">Destination :{{ trajet.destination }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+    </div>
+    <!-- Bouton fixe -->
+    <div class="info-bubble">Laissez un avis !</div>
+    <a href="{{ path('feedback') }}" class="fixed-button">
+        <i class="fas fa-comment"></i> <!-- Icône pour le bouton -->
+    </a>
+    <!-- Pied de page -->
+    <footer>
+        <div class="container-footer">
+            <div class="footer-section">
+                Agissez face à la pollution !
+            </div>
+            <div class="footer-section">
+                <h4>Ensemble, vers une mobilité plus verte.</h4>
+            </div>
+            <div class="footer-section">
+                <a href="{{ path('app_default_contact') }}">Nous contacter</a>
+            </div>
+        </div>
+        <div class="copyright">
+            <!-- Droits d'auteur -->
+            <p>Tous droits réservés &copy; 2025 Ecoride</p>
+        </div>
+    </footer>
+    <!-- Script JavaScript -->
+    <script src="{{ asset('js/menu.js') }}"></script>
+    <script src="{{ asset('js/filters.js') }}"></script>
+    <script src="https://kit.fontawesome.com/8bd5dfedd7.js" crossorigin="anonymous"></script>
+</body>
+</html>

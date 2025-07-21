@@ -5,26 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Titre de la page -->
-    <title>Services de réparation - Garage V. Parrot</title>
+    <title>Services - Ecoride</title>
     <!-- Liens vers les fichiers CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('css/services.css') }}">
 </head>
 <body>
-    <!-- En-tête de la page -->
     <header>
-        <!-- Titre principal -->
         <div>
-            <img src="{{ asset('images/logo-light-no-text.png') }}" alt="Logo Garage V. Parrot" class="logo">
-            <h1>Garage V. Parrot</h1>
+            <img src="{{ asset('images/logo.png') }}" alt="EcoRide" class="logo">
+            <h1>EcoRide</h1>
         </div>
         <!-- Bouton de menu pour les appareils mobiles -->
         <div class="menu-toggle">&#9776;</div>
         <!-- Navigation -->
         <nav>
             <a href="{{ path('app_default_home') }}">Accueil</a>
-            <a href="{{ path('occasion') }}">Occasion</a>
+            <a href="{{ path('trajets') }}">Trajets</a>
             <a class="active" href="{{ path('app_default_services') }}">Services</a>
             <a href="{{ path('app_default_contact') }}">Contact</a>
             <a href="{{ path('feedback') }}">Témoignages</a>
@@ -35,72 +33,59 @@
     <div class="container">
         <!-- Image de grande taille avec superposition -->
         <div class="big-title">
-            <img src="{{ asset('images/cars1.jpg') }}" alt="Services de réparation" class="full-width-image">
+            <img src="{{ asset('images/traffic.jpg') }}" alt="EcoRide" class="full-width-image">
             <div class="big-title-overlay"></div>
             <h2>Nos services</h2>
         </div>
-        <!-- Contenu des services de réparation -->
         <div class="row">
-            <!-- Bloc de service -->
             <div class="service-block">
-                <!-- Image du service -->
                 <div class="service-image">
-                    <img src="{{ asset('images/carosserie.jpg') }}" alt="Carosserie">
+                    <img src="{{ asset('images/covoit-2.jpg') }}" alt="Covoit">
                 </div>
                 <!-- Contenu du service -->
-                <div class="service-content">
-                    <!-- Icône du service -->
-                    <i class="fa-solid fa-paint-roller fa-3x icon"></i>
-                    <!-- Titre du service -->
-                    <h3>Carosserie</h3>
+                <div class="service-content mt-5">
+                    <h3>Qui sommes nous ?</h3>
                     <!-- Description du service -->
-                    <p>Redonnez vie à votre voiture avec notre service de réparation de carrosserie :
-                         expertise, précision et savoir-faire au service de la beauté et de la résilience
-                          de votre véhicule.</p>
+                    <p>Nous sommes EcoRide, nous avons pour objectif de réduire l’impact environnemental des déplacements en encourageant le covoiturage</p>
                 </div>
             </div>
             <!-- Blocs de service similaires pour les autres services -->
             <div class="service-block">
-                <div class="service-content">
-                    <i class="fas fa-tools fa-3x icon"></i><h3>Mécanique</h3>
-                    <p>Confiez la santé de votre voiture à nos experts en réparation mécanique :
-                         performance et fiabilité au rendez-vous pour des trajets en toute sérénité.</p>
+                <div class="service-content mt-5">
+                    </i><h3>C'est quoi ?</h3>
+                    <p>Le covoiturage est une solution simple et efficace pour partager des trajets à plusieurs afin de réduire l’empreinte carbone de nos trajets quotidiens</p>
                 </div>
                 <div class="service-image">
-                    <img src="{{ asset('images/engine.jpg') }}" alt="Mécanique">
+                    <img src="{{ asset('images/plant.jpg') }}" alt="Ecolo">
                 </div>
             </div>
             <div class="service-block">
                 <div class="service-image">
-                    <img src="{{ asset('images/cleaning.jpg') }}" alt="Entretien">
+                    <img src="{{ asset('images/road.jpg') }}" alt="trajets">
                 </div>
-                <div class="service-content">
-                    <i class="fa-solid fa-gears fa-3x icon"></i><h3>Entretien</h3>
-                    <p>Assurez la longévité et la sécurité de votre véhicule avec notre service d'entretien régulier :
-                         une garantie de performance et de tranquillité d'esprit sur toutes les routes.</p>
+                <div class="service-content mt-5">
+                    <h3>Des trajets réguliers</h3>
+                    <p>Rejoignez un covoiturage ou proposez d’être chauffeur pour tous trajets, que ce soit pour aller au travail ou même partir en vacances, il y en a pour tout le monde !</p>
                 </div>
             </div>
             <div class="service-block">
-                <div class="service-content">
-                    <i class="fa-solid fa-car fa-3x icon"></i><h3>Véhicules d'occasion</h3>
-                    <p>Découvrez l'excellence à chaque virage avec notre sélection de véhicules d'occasion :
-                         qualité, fiabilité et passion réunies pour vous offrir la voiture de vos rêves.</p>
-                    <a href="{{ path('occasion') }}" class="btn btn-danger mt-3">Voir plus</a>
+                <div class="service-content mt-5">
+                    </i><h3>Devenez conducteur</h3>
+                    <p>Inscrivez-vous en tant que conducteurs afin de proposer des trajets aux autres, vous verrez, on</p>
+                    <a href="{{ path('trajets') }}" class="btn btn-success mt-3">Voir plus</a>
                 </div>
                 <div class="service-image">
-                    <img src="{{ asset('images/mercedes.jpg') }}" alt="Véhicules d'occasion">
+                    <img src="{{ asset('images/covoit-1.jpg') }}" alt="devenir conducteur">
                 </div>
             </div>
             <div class="service-block">
                 <div class="service-image">
-                    <img src="{{ asset('images/telephone.jpg') }}" alt="telephone">
+                    <img src="{{ asset('images/driving.jpg') }}" alt="décidé">
                 </div>
-                <div class="service-content">
-                    <i class="fa-solid fa-phone fa-3x icon"></i><h3>Vous êtes décidés ?</h3>
-                    <p>De la pause café à la découverte de votre voiture parfaite, Vincent Parrot 
-                        vous accueille avec passion et expertise. Contactez-nous ou venez nous rendre
-                         visite dès maintenant !</p>
-                    <a href="{{ path('app_default_contact') }}" class="btn btn-danger mt-3">Contactez-nous !</a>
+                <div class="service-content mt-5">
+                    <h3>Vous êtes décidés ?</h3>
+                    <p>Alors démarrez sans plus attendre en quelques clics !</p>
+                    <a href="{{ path('app_login') }}" class="btn btn-success mt-3">Contactez-nous !</a>
                 </div>
             </div>
         </div>
@@ -113,32 +98,20 @@
     </a>
     <!-- Pied de page -->
     <footer>
-        <!-- Conteneur du pied de page -->
         <div class="container-footer">
-            <!-- Sections du pied de page -->
             <div class="footer-section">
-                <!-- Horaires d'ouverture -->
-                <h3>Horaires d'ouverture</h3>
-                <p>Lundi - Vendredi : 8h45 - 12h00, 14h00 - 18h00</p>
-                <p>Samedi : 8h45 - 12h00</p>
-                <p>Dimanche : Fermé</p>
+                Agissez face à la pollution !
             </div>
             <div class="footer-section">
-                <!-- Adresse -->
-                <h3>Adresse</h3>
-                <p>123 Rue de la République</p>
-                <p>75001 Paris, France</p>
+                <h4>Ensemble, vers une mobilité plus verte.</h4>
             </div>
             <div class="footer-section">
-                <!-- Contact -->
-                <h3>Contact :</h3>
-                <a class="link-danger" href="{{ path('app_default_contact') }}">Contactez-nous !</a>
-                <p>contact@garageparrot.com</p>
+                <a href="{{ path('app_default_contact') }}">Nous contacter</a>
             </div>
         </div>
         <div class="copyright">
             <!-- Droits d'auteur -->
-            <p>Tous droits réservés &copy; 2024 Garage Vincent Parrot</p>
+            <p>Tous droits réservés &copy; 2025 Ecoride</p>
         </div>
     </footer>
     <!-- Script pour activer/désactiver la navigation sur les appareils mobiles -->

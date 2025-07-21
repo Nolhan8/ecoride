@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Garage V. Parrot</title>
+    <title>Dashboard - Ecoride</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}"> <!-- Ajoutez le CSS spécifique au tableau de bord -->
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div>
-            <img src="{{ asset('images/logo-light-no-text.png') }}" alt="Logo Garage V. Parrot" class="logo">
-            <h1>Garage V. Parrot</h1>
+            <img src="{{ asset('images/logo.png') }}" alt="EcoRide" class="logo">
+            <h1>EcoRide</h1>
         </div>
+        <!-- Bouton de menu pour les appareils mobiles -->
         <div class="menu-toggle">&#9776;</div>
+        <!-- Navigation -->
         <nav>
-            <a href="{{ path('app_default_home') }}">Accueil</a>
-            <a class="active" href="{{ path('admin_dashboard') }}">Dashboard</a> <!-- Lien actif sur le dashboard -->
-            <a href="{{ path('occasion') }}">Occasion</a>
+            <a class="active" href="{{ path('app_default_home') }}">Accueil</a>
+            <a href="{{ path('trajets') }}">Trajets</a>
             <a href="{{ path('app_default_services') }}">Services</a>
             <a href="{{ path('app_default_contact') }}">Contact</a>
             <a href="{{ path('feedback') }}">Témoignages</a>
@@ -30,144 +30,139 @@
     <div class="container">
         <!-- Big Title -->
         <div class="big-title">
-            <img src="{{ asset('images/cars1.jpg') }}" alt="Dashboard" class="full-width-image">
+            <img src="{{ asset('images/covoit-1.jpg') }}" alt="Dashboard" class="full-width-image">
             <div class="big-title-overlay"></div>
             <h2>Dashboard</h2>
         </div>
         <!-- Dashboard tabs -->
         <div class="dashboard-tabs">
             <ul class="nav nav-tabs">
-                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#occasion">Occasion</a></li>
+                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#trajets">Trajets</a></li>
                 <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#utilisateurs">Utilisateurs</a></li>
                 <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#services">Services</a></li>
                 <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#temoignages">Témoignages</a></li>
                 <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#general">Général</a></li>
             </ul>
-            <!-- Contenu des onglets (à remplir selon vos besoins) -->
+            <!-- Contenu des onglets -->
             <div class="tab-content">
-                <!-- Contenu pour l'onglet Voitures -->
-                <div id="occasion" class="tab-pane fade">
-                    <h3>Gestion des voitures</h3>
+                <div id="trajets" class="tab-pane fade">
+                    <h3>Gestion des trajets</h3>
                     <hr>
-                    <!-- Tableau pour afficher les voitures -->
+                    <!-- Tableau pour afficher les trajets -->
                     <table class="table">
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Modèle</th>
+                                <th>Conducteur</th>
                                 <th>Prix</th>
-                                <th>Kilométrage</th>
-                                <th>Année</th>
+                                <th>Depart</th>
+                                <th>Destination</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        <tbody id="cars-table">
-                            <!-- Les voitures seront affichées ici -->
+                        <tbody id="trajets-table">
+
                         </tbody>
                     </table>
 
-                    <!-- Formulaire pour créer une nouvelle voiture -->
-                    <h4>Créer une nouvelle voiture</h4>
-                    <form id="create-car-form" action="{{ path('api_occasion_cars_new') }}" method="post" enctype="multipart/form-data">
+
+                    <h4>Créer un nouveau trajet</h4>
+                    <form id="create-trajet-form" action="{{ path('api_trajets_trajets_new') }}" method="post" enctype="multipart/form-data">
                         <div class="form-group">
-                            <label for="model">Modèle</label>
-                            <input type="text" name="model" id="model" class="form-control" required>
+                            <label for="driver">Conducteur</label>
+                            <input type="text" name="driver" id="driver" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="price">Prix</label>
                             <input type="number" name="price" id="price" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="kilometer">Kilométrage</label>
-                            <input type="number" name="kilometer" id="kilometer" class="form-control" required>
+                            <label for="depart">Depart</label>
+                            <input type="text" name="depart" id="depart" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="year">Année</label>
-                            <input type="number" name="year" id="year" class="form-control" required>
+                            <label for="destination">Destination</label>
+                            <input type="text" name="destination" id="destination" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="year">Image</label>
+                            <label for="image">Image</label>
                             <input type="file" name="image" id="image" class="form-control-file" accept="image/**">
                         </div>
-                        <button type="submit" class="btn btn-primary">Créer la voiture</button>
+                        <button type="submit" class="btn btn-primary">Créer le trajet</button>
                     </form>
 
                     <!-- Script JavaScript pour gérer les interactions avec l'API -->
                     <script>
-                        // Fonction pour afficher les voitures
-                        function fetchCars() {
-                            fetch('{{ path('api_occasion_cars_index') }}')
+                        // Fonction pour afficher les trajets
+                        function fetchTrajets() {
+                            fetch('{{ path('api_trajets_trajets_index') }}')
                                 .then(response => response.json())
                                 .then(data => {
-                                    const carsTable = document.getElementById('cars-table');
-                                    carsTable.innerHTML = '';
-                                    data.forEach(car => {
+                                    const trajetsTable = document.getElementById('trajets-table');
+                                    trajetsTable.innerHTML = '';
+                                    data.forEach(trajet => {
                                         const row = document.createElement('tr');
                                         row.innerHTML = `
-                                            <td>${car.id}</td>
-                                            <td>${car.model}</td>
-                                            <td>${car.price}</td>
-                                            <td>${car.kilometer}</td>
-                                            <td>${car.year}</td>
-                                            <td>${car.img}</td>
+                                            <td>${trajet.id}</td>
+                                            <td>${trajet.driver}</td>
+                                            <td>${trajet.price}</td>
+                                            <td>${trajet.depart}</td>
+                                            <td>${trajet.destination}</td>
+                                            <td>${trajet.img}</td>
                                             <td>
-                                                <button class="btn btn-primary btn-sm" onclick="editCar(${car.id})">Modifier</button>
-                                                <button class="btn btn-danger btn-sm" onclick="deleteCar(${car.id})">Supprimer</button>
+                                                <button class="btn btn-primary btn-sm" onclick="editTrajets(${trajet.id})">Modifier</button>
+                                                <button class="btn btn-danger btn-sm" onclick="deleteTrajets(${trajet.id})">Supprimer</button>
                                             </td>
                                         `;
-                                        carsTable.appendChild(row);
+                                        trajetsTable.appendChild(row);
                                     });
                                 });
                         }
 
-                        // Fonction pour créer une nouvelle voiture
-                        document.getElementById('create-car-form').addEventListener('submit', function(event) {
+                        document.getElementById('create-trajets-form').addEventListener('submit', function(event) {
                             event.preventDefault();
                             const formData = new FormData(this);
-                            const carData = {};
+                            const trajetsData = {};
                             formData.forEach((value, key) => {
-                                carData[key] = value;
+                                trajetsData[key] = value;
                             });
-                            fetch('{{ path('api_occasion_cars_new') }}', {
+                            fetch('{{ path('api_trajets_trajets_new') }}', {
                                 method: 'POST',
-                                body: JSON.stringify(carData),
+                                body: JSON.stringify(trajetData),
                                 headers: {
                                     'Content-Type': 'application/json'
                                 }
                             })
                             .then(() => {
-                                fetchCars();
+                                fetchtrajets();
                                 this.reset();
                             });
                         });
 
-                        // Fonction pour modifier une voiture
-                        function editCar(id) {
-                            const newModel = prompt('Entrez le nouveau modèle :');
-                            if (newModel) {
-                                fetch('{{ path('api_occasion_cars_edit', {'id': 0}) }}'.replace('0', id), {
+                        function editTrajet(id) {
+                            const newDriver = prompt('Entrez le nom du conducteur :');
+                            if (newDriver) {
+                                fetch('{{ path('api_trajets_trajets_edit', {'id': 0}) }}'.replace('0', id), {
                                     method: 'PUT',
-                                    body: JSON.stringify({ model: newModel }),
+                                    body: JSON.stringify({ driver: newDriver }),
                                     headers: {
                                         'Content-Type': 'application/json'
                                     }
                                 })
-                                .then(() => fetchCars());
+                                .then(() => fetchTrajets());
                             }
                         }
 
-                        // Fonction pour supprimer une voiture
-                        function deleteCar(id) {
-                            if (confirm('Êtes-vous sûr de vouloir supprimer cette voiture ?')) {
-                                fetch('{{ path('api_occasion_cars_delete', {'id': 0}) }}'.replace('0', id), {
+                        function deleteTrajet(id) {
+                            if (confirm('Êtes-vous sûr de vouloir supprimer ce trajet ?')) {
+                                fetch('{{ path('api_trajets_trajets_delete', {'id': 0}) }}'.replace('0', id), {
                                     method: 'DELETE'
                                 })
-                                .then(() => fetchCars());
+                                .then(() => fetchTrajets());
                             }
                         }
 
-                        // Appel initial pour afficher les voitures
-                        fetchCars();
+                        fetchTrajets();
                     </script>
                 </div>
                 <div id="utilisateurs" class="tab-pane fade">
@@ -395,28 +390,22 @@
     <a href="{{ path('feedback') }}" class="fixed-button">
         <i class="fas fa-comment"></i>
     </a>
-    <!-- Footer -->
+    <!-- Pied de page -->
     <footer>
         <div class="container-footer">
             <div class="footer-section">
-                <h3>Horaires d'ouverture</h3>
-                <p>Lundi - Vendredi : 8h45 - 12h00, 14h00 - 18h00</p>
-                <p>Samedi : 8h45 - 12h00</p>
-                <p>Dimanche : Fermé</p>
+                Agissez face à la pollution !
             </div>
             <div class="footer-section">
-                <h3>Adresse</h3>
-                <p>123 Rue de la République</p>
-                <p>75001 Paris, France</p>
+                <h4>Ensemble, vers une mobilité plus verte.</h4>
             </div>
             <div class="footer-section">
-                <h3>Contact</h3>
-                <a class="link-danger" href="{{ path('app_default_contact') }}">Contactez-nous !</a>
-                <p>contact@garageparrot.com</p>
+                <a href="{{ path('app_default_contact') }}">Nous contacter</a>
             </div>
         </div>
         <div class="copyright">
-            <p>Tous droits réservés &copy; 2024 Garage Vincent Parrot</p>
+            <!-- Droits d'auteur -->
+            <p>Tous droits réservés &copy; 2025 Ecoride</p>
         </div>
     </footer>
     <!-- Chargement de la bibliothèque jQuery -->

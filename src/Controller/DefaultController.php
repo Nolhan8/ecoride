@@ -2,11 +2,11 @@
 
 namespace App\Controller;
 
-use App\Entity\Car;
+use App\Entity\Trajets;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Repository\CarRepository;
+use App\Repository\TrajetsRepository;
 use App\Repository\FeedbackRepository;
 
 class DefaultController extends AbstractController
@@ -44,15 +44,15 @@ class DefaultController extends AbstractController
         // Contenu de la page d'accueil
         return $this->render('default/services.html.twig');
     }
-    #[Route('/occasion', name: 'occasion')]
-    public function occasion(CarRepository $carRepository): Response
+    #[Route('/trajets', name: 'trajets')]
+    public function trajets(TrajetsRepository $trajetsRepository): Response
     {
-        // Récupérer la liste des voitures depuis le repository
-        $cars = $carRepository->findAll();
+        // Récupérer la liste des trajets depuis le repository
+        $trajets = $trajetsRepository->findAll();
 
-        // Passer la liste des voitures au modèle Twig pour affichage
-        return $this->render('default/occasion.html.twig', [
-            'cars' => $cars,
+        // Passer la liste des trajets au modèle Twig pour affichage
+        return $this->render('default/trajets.html.twig', [
+            'trajets' => $trajets,
     ]);
     }
 

@@ -18,8 +18,8 @@
 
 /* Ajout d'un fond de couleur sur toute la largeur derrière un bloc sur deux */
 .service-block:nth-child(even) {
-    background-color: #262526;
-    color: #F2F2F2;
+    background-color: #E7DCCB;
+    color: #262526;
 }
 
 /* Styles du contenu des blocs de service */

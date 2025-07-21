@@ -42,8 +42,8 @@ class CreateAdminCommand extends Command
         $admin->setUsername('admin');
         $admin->setEmail('admin@example.com');
         $admin->setRole('admin');
-        $admin->setFirstName('Vincent');
-        $admin->setLastName('Parrot');
+        $admin->setFirstName('Jose');
+        $admin->setLastName('Ecoride');
 
         // Encoder le mot de passe de l'administrateur
         $plainPassword = 'admin123'; // Changez cela en un mot de passe sécurisé

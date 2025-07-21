@@ -2,20 +2,20 @@
 
 namespace App\Entity;
 
-use App\Repository\CarRepository;
+use App\Repository\TrajetsRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: CarRepository::class)]
-class Car
+#[ORM\Entity(repositoryClass: TrajetsRepository::class)]
+class Trajets
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(type: "integer")]
     private ?int $id = null;
 
     #[ORM\Column(length: 64)]
-    private ?string $model = null;
+    private ?string $driver = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 12, scale: 2)]
     private ?string $price = null;
@@ -23,25 +23,25 @@ class Car
     #[ORM\Column(length: 255, nullable:true)]
     private $img;
 
-    #[ORM\Column]
-    private ?int $year = null;
+    #[ORM\Column(length: 64)]
+    private ?string $depart = null;
 
-    #[ORM\Column]
-    private ?int $kilometer = null;
+    #[ORM\Column(length: 64)]
+    private ?string $destination = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getModel(): ?string
+    public function getDriver(): ?string
     {
-        return $this->model;
+        return $this->driver;
     }
 
-    public function setModel(string $model): static
+    public function setDriver(string $driver): static
     {
-        $this->model = $model;
+        $this->driver = $driver;
 
         return $this;
     }
@@ -70,26 +70,26 @@ class Car
         return $this;
     }
 
-    public function getYear(): ?int
+    public function getDepart(): ?string
     {
-        return $this->year;
+        return $this->depart;
     }
 
-    public function setYear(int $year): static
+    public function setDepart(string $depart): static
     {
-        $this->year = $year;
+        $this->depart = $depart;
 
         return $this;
     }
 
-    public function getKilometer(): ?int
+    public function getDestination(): ?string
     {
-        return $this->kilometer;
+        return $this->destination;
     }
 
-    public function setKilometer(int $kilometer): static
+    public function setDestination(string $destination): static
     {
-        $this->kilometer = $kilometer;
+        $this->destination = $destination;
 
         return $this;
     }
